@@ -1,3 +1,4 @@
+import 'package:flash_chat/flash_button.dart';
 import 'package:flash_chat/screen/login_screen.dart';
 import 'package:flash_chat/screen/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 30),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/logo.png',
-                    scale: 10,
+                  Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'images/logo.png',
+                      scale: 10,
+                    ),
                   ),
                   const Text(
                     'Flash Chat',
@@ -40,54 +44,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ]
               ),
             ),
-            const WelcomeButton(
+            const FlashButton(
               buttonColor: Colors.lightBlueAccent,
               buttonText: 'Log In',
               route: LoginScreen.id,
             ),
-            const WelcomeButton(
+            const FlashButton(
               buttonText: 'Registration',
               buttonColor: Colors.blueAccent,
               route: RegistrationScreen.id
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class WelcomeButton extends StatelessWidget {
-  const WelcomeButton({
-    super.key,
-    required this.buttonText,
-    required this.buttonColor,
-    required this.route,
-  });
-
-  final String buttonText;
-  final MaterialAccentColor buttonColor;
-  final String route;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        style: ButtonStyle(
-          shape: MaterialStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
-          ),
-          backgroundColor: MaterialStatePropertyAll(
-            buttonColor
-          ),
-          fixedSize: const MaterialStatePropertyAll(Size.fromHeight(50))
-        ),
-        child: Text(
-          buttonText
         ),
       ),
     );
