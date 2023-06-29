@@ -5,21 +5,19 @@ class FlashButton extends StatelessWidget {
     super.key,
     required this.buttonText,
     required this.buttonColor,
-    required this.route,
+    required this.onPressed
   });
 
   final String buttonText;
   final MaterialAccentColor buttonColor;
-  final String route;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
+        onPressed: onPressed,
         style: ButtonStyle(
             shape: MaterialStatePropertyAll(
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))

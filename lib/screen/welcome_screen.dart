@@ -1,4 +1,4 @@
-import 'package:flash_chat/flash_button.dart';
+import 'package:flash_chat/components/flash_button.dart';
 import 'package:flash_chat/screen/login_screen.dart';
 import 'package:flash_chat/screen/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -44,15 +44,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ]
               ),
             ),
-            const FlashButton(
+            FlashButton(
               buttonColor: Colors.lightBlueAccent,
               buttonText: 'Log In',
-              route: LoginScreen.id,
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              }
             ),
-            const FlashButton(
+            FlashButton(
               buttonText: 'Registration',
               buttonColor: Colors.blueAccent,
-              route: RegistrationScreen.id
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
             )
           ],
         ),
